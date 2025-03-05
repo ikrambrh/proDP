@@ -1,12 +1,9 @@
 'use client';
 
-import Sidebar from '../components/Sidebar'; // Import your Sidebar component
-import SearchBar from '../components/SearchBar';
+import Sidebar from '../components/Sidebar'; // Sidebar on the left
+import TopBar from '../components/TopBar'; // Top navigation bar
 
 export default function Home() {
-  const handleSearch = (term) => {
-    console.log('Recherche :', term);
-  };
 
   return (
     <div className="flex min-h-screen">
@@ -14,10 +11,11 @@ export default function Home() {
       <Sidebar />
 
       {/* Main content area */}
-      <div className="flex-1 p-6 bg-gray-100">
-        <h1 className="text-2xl font-bold mb-4">Ma Recherche</h1>
-        <SearchBar onSearch={handleSearch} />
-        <h2 className="mt-4">Test 1-2</h2>
+      <div className="flex-1 flex flex-col">
+        {/* TopBar at the top */}
+        <TopBar />
+
+      
       </div>
     </div>
   );

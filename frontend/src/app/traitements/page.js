@@ -1,4 +1,4 @@
-export default function Traitements() {
+export default function traitements() {
     return (
       <div className="p-6">
         <h1 className="text-2xl font-bold">Page Traitements</h1>
