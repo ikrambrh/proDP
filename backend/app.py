@@ -1,30 +1,20 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
-import mysql.connector
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from config import SQLALCHEMY_DATABASE_URI
 
 app = Flask(__name__)
-CORS(app)  # Permet d'éviter les problèmes de CORS
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# Configuration de la base de données
-db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': 'password',
-    'database': 'ma_bdd'
-}
+db = SQLAlchemy(app)
 
-def get_db_connection():
-    return mysql.connector.connect(**db_config)
+# Importer les modèles après l'initialisation de `db`
+#import models 
 
-@app.route('/api/data', methods=['GET'])
-def get_data():
-    conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM table_exemple")
-    data = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return jsonify(data)
 
-if __name__ == '__main__':
+@app.route("/")
+def home():
+    return "Serveur Flask fonctionnel ! "
+
+if __name__ == "__main__":
     app.run(debug=True)
