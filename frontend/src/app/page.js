@@ -1,21 +1,24 @@
-'use client';
+"use client";
 
-import Sidebar from '../components/Sidebar'; // Sidebar on the left
-import TopBar from '../components/TopBar'; // Top navigation bar
+import Sidebar from "../components/Sidebar"; // Sidebar on the left
+import TopBar from "../components/TopBar"; // Top navigation bar
 
 export default function Home() {
-
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar on the left */}
+      {/* Sidebar (Fixed Position) */}
       <Sidebar />
 
-      {/* Main content area */}
-      <div className="flex-1 flex flex-col">
-        {/* TopBar at the top */}
+      {/* Main Content (Add margin to prevent overlap) */}
+      <div className="flex-1 flex flex-col ml-64">  
+        {/* Top Navigation Bar */}
         <TopBar />
 
-      
+        {/* Main Page Content */}
+        <div className="p-6">
+          {/* Your page content goes here */}
+          <h1 className="text-2xl font-bold">Page content</h1>
+        </div>
       </div>
     </div>
   );
